@@ -3,11 +3,112 @@
 import Link from "next/link";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export function Navigation() {
   const { openDrawer, cartCount } = useCart();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Mobile menu rendered via portal to escape transform context
+  const mobileMenu = mounted && isMobileMenuOpen ? createPortal(
+    <div 
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999,
+        backgroundColor: '#000',
+        display: 'flex',
+        flexDirection: 'column',
+        color: 'white',
+      }}
+    >
+      {/* Close Button */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '16px' }}>
+        <button 
+          onClick={() => setIsMobileMenuOpen(false)}
+          style={{ padding: '12px', color: 'rgba(255,255,255,0.6)' }}
+          aria-label="Close menu"
+        >
+          <X style={{ width: '32px', height: '32px' }} strokeWidth={1.5} />
+        </button>
+      </div>
+
+      {/* Menu Links */}
+      <div style={{ 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        gap: '48px' 
+      }}>
+        <Link 
+          href="/works" 
+          onClick={() => setIsMobileMenuOpen(false)}
+          style={{ 
+            fontFamily: 'var(--font-cormorant)', 
+            fontSize: '48px', 
+            fontStyle: 'italic',
+            color: 'white',
+            textDecoration: 'none'
+          }}
+        >
+          Archive
+        </Link>
+        
+        <Link 
+          href="/about" 
+          onClick={() => setIsMobileMenuOpen(false)}
+          style={{ 
+            fontFamily: 'var(--font-cormorant)', 
+            fontSize: '48px', 
+            fontStyle: 'italic',
+            color: 'white',
+            textDecoration: 'none'
+          }}
+        >
+          Mind
+        </Link>
+        
+        <Link 
+          href="/contact" 
+          onClick={() => setIsMobileMenuOpen(false)}
+          style={{ 
+            fontFamily: 'var(--font-cormorant)', 
+            fontSize: '48px', 
+            fontStyle: 'italic',
+            color: 'white',
+            textDecoration: 'none'
+          }}
+        >
+          Contact
+        </Link>
+      </div>
+
+      {/* Footer */}
+      <div style={{ padding: '32px', textAlign: 'center' }}>
+        <p style={{ 
+          fontFamily: 'var(--font-geist-mono)', 
+          fontSize: '9px', 
+          textTransform: 'uppercase', 
+          letterSpacing: '0.5em',
+          color: 'rgba(255,255,255,0.3)'
+        }}>
+          Matthew Manthé
+        </p>
+      </div>
+    </div>,
+    document.body
+  ) : null;
 
   return (
     <>
@@ -59,65 +160,8 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Menu - Full Screen Overlay - ALWAYS RENDERED, visibility controlled by state */}
-      <div 
-        className={`fixed inset-0 z-[500] bg-black flex flex-col transition-all duration-300 ${
-          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        style={{ color: 'white' }}
-      >
-        {/* Close Button */}
-        <div className="flex justify-end p-4">
-          <button 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="p-3"
-            aria-label="Close menu"
-            style={{ color: 'rgba(255,255,255,0.6)' }}
-          >
-            <X className="w-8 h-8" strokeWidth={1.5} />
-          </button>
-        </div>
-
-        {/* Menu Links - Using inline styles to guarantee visibility */}
-        <div className="flex-1 flex flex-col items-center justify-center gap-12">
-          <Link 
-            href="/works" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="font-serif text-5xl italic"
-            style={{ color: 'white' }}
-          >
-            Archive
-          </Link>
-          
-          <Link 
-            href="/about" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="font-serif text-5xl italic"
-            style={{ color: 'white' }}
-          >
-            Mind
-          </Link>
-          
-          <Link 
-            href="/contact" 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="font-serif text-5xl italic"
-            style={{ color: 'white' }}
-          >
-            Contact
-          </Link>
-        </div>
-
-        {/* Footer */}
-        <div className="p-8 text-center">
-          <p 
-            className="font-mono text-[9px] uppercase tracking-[0.5em]"
-            style={{ color: 'rgba(255,255,255,0.3)' }}
-          >
-            Matthew Manthé
-          </p>
-        </div>
-      </div>
+      {/* Mobile Menu via Portal */}
+      {mobileMenu}
     </>
   );
 }
