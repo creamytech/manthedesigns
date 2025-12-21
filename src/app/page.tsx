@@ -1,177 +1,279 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Threshold } from "@/components/animations/Threshold";
 import { Navigation } from "@/components/layout/Navigation";
 import { Gallery } from "@/components/gallery/Gallery";
 import Image from "next/image";
 
+// Desktop parallax experience
+function DesktopExperience() {
+  const { scrollYProgress } = useScroll();
+
+  // Hero zoom on scroll
+  const heroScale = useTransform(scrollYProgress, [0, 0.15], [1, 1.3]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+
+  // Art layer parallax with ZOOM
+  const layer1Y = useTransform(scrollYProgress, [0.08, 0.5], [300, -300]);
+  const layer1X = useTransform(scrollYProgress, [0.08, 0.5], [-100, 50]);
+  const layer1Scale = useTransform(scrollYProgress, [0.08, 0.35, 0.5], [0.8, 1.2, 1.5]);
+  const layer1Rotate = useTransform(scrollYProgress, [0.08, 0.5], [-2, 3]);
+  const layer1Opacity = useTransform(scrollYProgress, [0.1, 0.2, 0.42, 0.5], [0, 1, 1, 0]);
+
+  const layer2Y = useTransform(scrollYProgress, [0.1, 0.55], [400, -250]);
+  const layer2X = useTransform(scrollYProgress, [0.1, 0.55], [100, -30]);
+  const layer2Scale = useTransform(scrollYProgress, [0.1, 0.38, 0.55], [0.7, 1.3, 1.6]);
+  const layer2Rotate = useTransform(scrollYProgress, [0.1, 0.55], [3, -2]);
+  const layer2Opacity = useTransform(scrollYProgress, [0.12, 0.22, 0.45, 0.55], [0, 1, 1, 0]);
+
+  const layer3Y = useTransform(scrollYProgress, [0.12, 0.52], [350, -350]);
+  const layer3Scale = useTransform(scrollYProgress, [0.12, 0.4, 0.52], [0.9, 1.4, 1.8]);
+  const layer3Rotate = useTransform(scrollYProgress, [0.12, 0.52], [-1, 2]);
+  const layer3Opacity = useTransform(scrollYProgress, [0.15, 0.28, 0.44, 0.52], [0, 0.9, 0.9, 0]);
+
+  const layer4Y = useTransform(scrollYProgress, [0.15, 0.58], [280, -400]);
+  const layer4X = useTransform(scrollYProgress, [0.15, 0.58], [50, -80]);
+  const layer4Scale = useTransform(scrollYProgress, [0.15, 0.42, 0.58], [0.75, 1.35, 1.7]);
+  const layer4Rotate = useTransform(scrollYProgress, [0.15, 0.58], [2, -3]);
+  const layer4Opacity = useTransform(scrollYProgress, [0.18, 0.3, 0.48, 0.58], [0, 1, 1, 0]);
+
+  const anchorOpacity = useTransform(scrollYProgress, [0.52, 0.65], [0, 1]);
+  const anchorScale = useTransform(scrollYProgress, [0.52, 0.72], [1.4, 1]);
+  const anchorY = useTransform(scrollYProgress, [0.52, 0.72], [150, 0]);
+  const anchorRotate = useTransform(scrollYProgress, [0.52, 0.72], [2, 0]);
+
+  const galleryOpacity = useTransform(scrollYProgress, [0.78, 0.88], [0, 1]);
+  const galleryY = useTransform(scrollYProgress, [0.78, 0.92], [80, 0]);
+
+  return (
+    <>
+      {/* Hero Section - Fixed with zoom */}
+      <motion.section 
+        style={{ opacity: heroOpacity }}
+        className="h-screen fixed inset-0 flex items-center justify-center overflow-hidden z-10"
+      >
+        <motion.div 
+          style={{ scale: heroScale }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/images/16+Faces.+remake+screen.jpg"
+            alt=""
+            fill
+            className="object-cover grayscale contrast-150 brightness-[0.2]"
+            priority
+          />
+        </motion.div>
+
+        <motion.div style={{ scale: heroScale }} className="relative z-20 text-center px-6">
+          <motion.h1 
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="font-serif text-[14vw] leading-[0.8] tracking-tighter italic"
+          >
+            Manthé
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, letterSpacing: "0.2em" }}
+            animate={{ opacity: 0.7, letterSpacing: "0.8em" }}
+            transition={{ duration: 2, delay: 0.8 }}
+            className="mt-4 font-mono text-sm uppercase"
+          >
+            Designs
+          </motion.p>
+        </motion.div>
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,#050505_80%)] pointer-events-none" />
+        
+        <motion.div 
+          initial={{ opacity: 0, scaleY: 0 }}
+          animate={{ opacity: 0.4, scaleY: 1 }}
+          transition={{ delay: 2, duration: 1.5 }}
+          className="absolute bottom-16 left-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-foreground to-transparent origin-top"
+        />
+      </motion.section>
+
+      <div className="h-screen" />
+
+      <div className="relative">
+        {/* Parallax Art Field */}
+        <div className="h-[350vh] relative">
+          <motion.div
+            style={{ y: layer1Y, x: layer1X, scale: layer1Scale, rotate: layer1Rotate, opacity: layer1Opacity }}
+            className="fixed top-[15%] left-[3%] w-[38vw] aspect-[3/4] z-20 origin-center"
+          >
+            <Image src="/images/Screen+Shot+Crossroads.jpg" alt="" fill className="object-cover grayscale contrast-125" />
+            <div className="absolute inset-0 shadow-[0_0_80px_rgba(0,0,0,0.8)]" />
+          </motion.div>
+
+          <motion.div
+            style={{ y: layer2Y, x: layer2X, scale: layer2Scale, rotate: layer2Rotate, opacity: layer2Opacity }}
+            className="fixed top-[10%] right-[5%] w-[42vw] aspect-[4/5] z-30 origin-center"
+          >
+            <Image src="/images/EYE+IN+THE+SKY.jpg" alt="" fill className="object-cover grayscale contrast-130" />
+            <div className="absolute inset-0 shadow-[0_0_100px_rgba(0,0,0,0.9)]" />
+          </motion.div>
+
+          <motion.div
+            style={{ y: layer3Y, scale: layer3Scale, rotate: layer3Rotate, opacity: layer3Opacity }}
+            className="fixed top-[30%] left-[25%] w-[32vw] aspect-square z-25 origin-center"
+          >
+            <Image src="/images/DARK+NIGHT.jpg" alt="" fill className="object-cover grayscale contrast-125 brightness-90" />
+            <div className="absolute inset-0 shadow-[0_0_120px_rgba(0,0,0,0.95)]" />
+          </motion.div>
+
+          <motion.div
+            style={{ y: layer4Y, x: layer4X, scale: layer4Scale, rotate: layer4Rotate, opacity: layer4Opacity }}
+            className="fixed top-[40%] right-[12%] w-[28vw] aspect-[3/4] z-35 origin-center"
+          >
+            <Image src="/images/3+SAINTS.jpg" alt="" fill className="object-cover" />
+            <div className="absolute inset-0 shadow-[0_0_100px_rgba(0,0,0,0.85)]" />
+          </motion.div>
+
+          <div className="fixed inset-0 bg-gradient-to-b from-[#050505]/20 via-transparent to-[#050505]/60 pointer-events-none z-40" />
+        </div>
+
+        {/* Anchor Section */}
+        <div className="h-[180vh] relative">
+          <motion.div
+            style={{ opacity: anchorOpacity, scale: anchorScale, y: anchorY, rotate: anchorRotate }}
+            className="sticky top-0 h-screen flex items-center justify-center"
+          >
+            <div className="relative w-[65vw] aspect-[4/5] max-w-4xl">
+              <Image src="/images/16+Faces.+remake+screen.jpg" alt="" fill className="object-cover grayscale contrast-125" />
+              <div className="absolute inset-0 shadow-[inset_0_0_150px_rgba(0,0,0,0.6)]" />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Gallery */}
+        <motion.section 
+          style={{ opacity: galleryOpacity, y: galleryY }}
+          className="relative z-50 px-8 pt-60 pb-80 bg-[#050505]"
+        >
+          <div className="max-w-[1600px] mx-auto">
+            <div className="mb-40 text-center">
+              <motion.div 
+                className="w-px h-16 bg-foreground/20 mx-auto mb-12"
+                initial={{ scaleY: 0 }}
+                whileInView={{ scaleY: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5 }}
+              />
+              <p className="font-mono text-[9px] uppercase tracking-[0.6em] opacity-30 mb-6">Archive</p>
+              <h2 className="font-serif text-5xl italic opacity-60">Selected Works</h2>
+            </div>
+            <Gallery />
+          </div>
+        </motion.section>
+      </div>
+    </>
+  );
+}
+
+// Mobile simple experience
+function MobileExperience() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 0.4, scale: 1 }}
+          transition={{ duration: 3 }}
+          className="absolute inset-0"
+        >
+          <Image src="/images/16+Faces.+remake+screen.jpg" alt="" fill className="object-cover grayscale contrast-125 brightness-[0.3]" priority />
+        </motion.div>
+
+        <div className="relative z-20 text-center px-6">
+          <motion.h1 
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.5, delay: 0.2 }}
+            className="font-serif text-[22vw] leading-[0.85] tracking-tighter italic"
+          >
+            Manthé
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            transition={{ duration: 1.5, delay: 0.6 }}
+            className="mt-4 font-mono text-xs uppercase tracking-[0.4em]"
+          >
+            Designs
+          </motion.p>
+        </div>
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#050505_80%)] pointer-events-none" />
+        
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ delay: 2 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-foreground to-transparent"
+        />
+      </section>
+
+      {/* Featured Art */}
+      <section className="py-12 px-4">
+        {["/images/Screen+Shot+Crossroads.jpg", "/images/EYE+IN+THE+SKY.jpg", "/images/DARK+NIGHT.jpg", "/images/3+SAINTS.jpg"].map((src, i) => (
+          <motion.div
+            key={src}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-6"
+          >
+            <div className="relative w-full aspect-[4/5] overflow-hidden">
+              <Image src={src} alt="" fill className={`object-cover contrast-110 ${i < 3 ? 'grayscale' : ''}`} />
+            </div>
+          </motion.div>
+        ))}
+      </section>
+
+      {/* Divider */}
+      <div className="flex justify-center py-12">
+        <div className="w-16 h-px bg-foreground/20" />
+      </div>
+
+      {/* Gallery */}
+      <section className="px-4 pb-20">
+        <div className="mb-12 text-center">
+          <p className="font-mono text-[8px] uppercase tracking-[0.4em] opacity-40 mb-3">Archive</p>
+          <h2 className="font-serif text-2xl italic opacity-70">Selected Works</h2>
+        </div>
+        <Gallery />
+      </section>
+    </>
+  );
+}
+
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <main className="min-h-screen relative bg-[#050505] text-foreground selection:bg-bone selection:text-ebony">
       <Threshold onEnter={() => setHasEntered(true)} />
-
       {hasEntered && (
         <>
           <Navigation />
-          
-          {/* Hero Section */}
-          <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
-            {/* Background Art */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 0.4, scale: 1 }}
-              transition={{ duration: 3 }}
-              className="absolute inset-0"
-            >
-              <Image
-                src="/images/16+Faces.+remake+screen.jpg"
-                alt=""
-                fill
-                className="object-cover grayscale contrast-125 brightness-[0.3]"
-                priority
-              />
-            </motion.div>
-
-            {/* Hero text */}
-            <div className="relative z-20 text-center px-6">
-              <motion.h1 
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.5, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-[20vw] md:text-[14vw] leading-[0.85] tracking-tighter italic"
-              >
-                Manthé
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
-                transition={{ duration: 1.5, delay: 0.6 }}
-                className="mt-4 font-mono text-xs md:text-sm uppercase tracking-[0.5em]"
-              >
-                Designs
-              </motion.p>
-            </div>
-
-            {/* Vignette */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,#050505_80%)] pointer-events-none" />
-            
-            {/* Scroll indicator */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              transition={{ delay: 2, duration: 1 }}
-              className="absolute bottom-8 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-foreground to-transparent"
-            />
-          </section>
-
-          {/* Featured Art - 2 Large Pieces */}
-          <section className="py-16 md:py-32 px-4 md:px-8">
-            {/* Piece 1 - Full width */}
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-8 md:mb-16"
-            >
-              <div className="relative w-full aspect-[4/5] md:aspect-[16/10] overflow-hidden">
-                <Image
-                  src="/images/Screen+Shot+Crossroads.jpg"
-                  alt=""
-                  fill
-                  className="object-cover grayscale contrast-125"
-                />
-              </div>
-            </motion.div>
-
-            {/* Piece 2 - Offset */}
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="md:ml-[15%] md:w-[70%] mb-8 md:mb-16"
-            >
-              <div className="relative w-full aspect-[3/4] overflow-hidden">
-                <Image
-                  src="/images/EYE+IN+THE+SKY.jpg"
-                  alt=""
-                  fill
-                  className="object-cover grayscale contrast-125"
-                />
-              </div>
-            </motion.div>
-
-            {/* Piece 3 - Full width again */}
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-8 md:mb-16"
-            >
-              <div className="relative w-full aspect-square md:aspect-[16/9] overflow-hidden">
-                <Image
-                  src="/images/DARK+NIGHT.jpg"
-                  alt=""
-                  fill
-                  className="object-cover grayscale contrast-125"
-                />
-              </div>
-            </motion.div>
-
-            {/* Piece 4 - Color piece (Plaster) */}
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="md:mr-[20%] md:w-[65%]"
-            >
-              <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image
-                  src="/images/3+SAINTS.jpg"
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </motion.div>
-          </section>
-
-          {/* Divider */}
-          <div className="flex justify-center py-16 md:py-32">
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
-              className="w-20 h-px bg-foreground/20"
-            />
-          </div>
-
-          {/* Gallery Section */}
-          <section className="px-4 md:px-8 pb-20 md:pb-40">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.5 }}
-              className="mb-16 md:mb-24 text-center"
-            >
-              <p className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.5em] opacity-40 mb-4">
-                Archive
-              </p>
-              <h2 className="font-serif text-3xl md:text-5xl italic opacity-70">
-                Selected Works
-              </h2>
-            </motion.div>
-            <Gallery />
-          </section>
+          {isMobile ? <MobileExperience /> : <DesktopExperience />}
         </>
       )}
     </main>
