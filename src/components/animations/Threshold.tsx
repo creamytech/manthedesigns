@@ -112,8 +112,11 @@ export function Threshold({ onEnter }: { onEnter: () => void }) {
               transition={{ duration: 1.5 }}
               className="mt-8 text-center"
             >
-              <span className="font-mono text-[9px] uppercase tracking-[0.5em]">
+              <span className="font-mono text-[9px] uppercase tracking-[0.5em] hidden md:inline">
                 Click to enter
+              </span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.5em] md:hidden">
+                Press to enter
               </span>
             </motion.div>
           </div>

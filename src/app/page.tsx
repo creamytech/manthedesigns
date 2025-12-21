@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Threshold } from "@/components/animations/Threshold";
 import { Navigation } from "@/components/layout/Navigation";
@@ -120,10 +120,30 @@ function ParallaxLayers() {
 
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
+  const [isChecking, setIsChecking] = useState(true);
+
+  useEffect(() => {
+    // Check session storage on mount
+    const entered = sessionStorage.getItem("manthe_entered");
+    if (entered === "true") {
+      setHasEntered(true);
+    }
+    setIsChecking(false);
+  }, []);
+
+  const handleEnter = () => {
+    setHasEntered(true);
+    sessionStorage.setItem("manthe_entered", "true");
+  };
+
+  if (isChecking) {
+    // Return a black screen to prevent flashing loop or content before check
+    return <div className="min-h-screen bg-[#050505]" />;
+  }
 
   return (
     <main className="min-h-screen relative bg-[#050505] text-foreground selection:bg-bone selection:text-ebony">
-      <Threshold onEnter={() => setHasEntered(true)} />
+      {!hasEntered && <Threshold onEnter={handleEnter} />}
 
       {hasEntered && (
         <>
