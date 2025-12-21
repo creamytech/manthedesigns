@@ -9,7 +9,7 @@ export function Gallery() {
   const featuredArtworks = artworks.slice(0, 6);
   
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-48 max-w-[1600px] mx-auto">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-x-12 md:gap-y-20 max-w-[1600px] mx-auto">
       {featuredArtworks.map((art, index) => (
         <GalleryItem key={art.id} artwork={art} index={index} />
       ))}
@@ -20,29 +20,29 @@ export function Gallery() {
 function GalleryItem({ artwork, index }: { artwork: Artwork; index: number }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-15%" }}
-      transition={{ delay: index * 0.15, duration: 2.5, ease: "easeOut" }}
+      viewport={{ once: true, margin: "-5%" }}
+      transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col group"
     >
       <Link href={`/works/${artwork.id}`} className="block relative">
-        <div className="relative aspect-[3/4] overflow-hidden bg-ebony">
+        <div className="relative aspect-[3/4] overflow-hidden bg-[#0a0a0a]">
            <Image
              src={artwork.imageUrl}
              alt={artwork.title}
              fill
-             className={`object-cover transition-all duration-[2500ms] ease-in-out group-hover:scale-[1.03] contrast-125 brightness-[0.7] group-hover:brightness-90 ${
+             className={`object-cover transition-all duration-700 ease-out group-hover:scale-[1.02] contrast-110 brightness-90 group-hover:brightness-100 ${
                artwork.medium !== "Plaster" ? "grayscale" : ""
              }`}
-             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
            />
         </div>
         
-        {/* Title and year - invisible by default, reveals on hover */}
-        <div className="mt-6 flex justify-between items-baseline opacity-0 group-hover:opacity-70 transition-opacity duration-1000">
-            <span className="font-serif text-lg italic">{artwork.title}</span>
-            <span className="font-mono text-[9px] uppercase tracking-[0.4em]">{artwork.year}</span>
+        {/* Title and year - visible on mobile, hover on desktop */}
+        <div className="mt-4 flex justify-between items-baseline opacity-60 md:opacity-0 md:group-hover:opacity-70 transition-opacity duration-500">
+            <span className="font-serif text-base md:text-lg italic">{artwork.title}</span>
+            <span className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.3em]">{artwork.year}</span>
         </div>
       </Link>
     </motion.div>
