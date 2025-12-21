@@ -4,7 +4,6 @@ import Link from "next/link";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export function Navigation() {
   const { openDrawer, cartCount } = useCart();
@@ -60,86 +59,65 @@ export function Navigation() {
         </div>
       </nav>
 
-      {/* Mobile Menu - Full Screen Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[500] bg-black md:hidden flex flex-col text-white"
+      {/* Mobile Menu - Full Screen Overlay - ALWAYS RENDERED, visibility controlled by state */}
+      <div 
+        className={`fixed inset-0 z-[500] bg-black flex flex-col transition-all duration-300 ${
+          isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        style={{ color: 'white' }}
+      >
+        {/* Close Button */}
+        <div className="flex justify-end p-4">
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-3"
+            aria-label="Close menu"
+            style={{ color: 'rgba(255,255,255,0.6)' }}
           >
-            {/* Close Button */}
-            <div className="flex justify-end p-4">
-              <button 
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="p-3 text-white/60 hover:text-white transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-8 h-8" strokeWidth={1.5} />
-              </button>
-            </div>
+            <X className="w-8 h-8" strokeWidth={1.5} />
+          </button>
+        </div>
 
-            {/* Menu Links */}
-            <div className="flex-1 flex flex-col items-center justify-center gap-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05, duration: 0.4 }}
-              >
-                <Link 
-                  href="/works" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-serif text-5xl italic text-white"
-                >
-                  Archive
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1, duration: 0.4 }}
-              >
-                <Link 
-                  href="/about" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-serif text-5xl italic text-white"
-                >
-                  Mind
-                </Link>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15, duration: 0.4 }}
-              >
-                <Link 
-                  href="/contact" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="font-serif text-5xl italic text-white"
-                >
-                  Contact
-                </Link>
-              </motion.div>
-            </div>
+        {/* Menu Links - Using inline styles to guarantee visibility */}
+        <div className="flex-1 flex flex-col items-center justify-center gap-12">
+          <Link 
+            href="/works" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="font-serif text-5xl italic"
+            style={{ color: 'white' }}
+          >
+            Archive
+          </Link>
+          
+          <Link 
+            href="/about" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="font-serif text-5xl italic"
+            style={{ color: 'white' }}
+          >
+            Mind
+          </Link>
+          
+          <Link 
+            href="/contact" 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="font-serif text-5xl italic"
+            style={{ color: 'white' }}
+          >
+            Contact
+          </Link>
+        </div>
 
-            {/* Footer */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="p-8 text-center"
-            >
-              <p className="font-mono text-[9px] uppercase tracking-[0.5em] text-white/30">
-                Matthew Manthé
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {/* Footer */}
+        <div className="p-8 text-center">
+          <p 
+            className="font-mono text-[9px] uppercase tracking-[0.5em]"
+            style={{ color: 'rgba(255,255,255,0.3)' }}
+          >
+            Matthew Manthé
+          </p>
+        </div>
+      </div>
     </>
   );
 }
