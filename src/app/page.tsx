@@ -110,7 +110,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="relative z-50 px-8 pt-16 md:pt-24 pb-32 bg-[#050505]"
+            className="relative z-50 px-8 pt-16 md:pt-0 pb-32 bg-[#050505]"
           >
             <div className="max-w-[1600px] mx-auto">
               <div className="mb-10 md:mb-20 text-center">
