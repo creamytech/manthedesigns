@@ -51,7 +51,7 @@ function ParallaxLayers() {
           style={{ y: layer1Y, x: layer1X, scale: layer1Scale, rotate: layer1Rotate, opacity: layer1Opacity }}
           className="fixed top-[15%] left-[3%] w-[38vw] aspect-[3/4] z-20 origin-center"
         >
-          <Image src="/images/Screen+Shot+Crossroads.jpg" alt="" fill className="object-cover grayscale contrast-125" />
+          <Image src="/images/Camo_Parallax.png" alt="" fill className="object-cover grayscale contrast-125" />
           <div className="absolute inset-0 shadow-[0_0_80px_rgba(0,0,0,0.8)]" />
         </motion.div>
 
@@ -59,7 +59,7 @@ function ParallaxLayers() {
           style={{ y: layer2Y, x: layer2X, scale: layer2Scale, rotate: layer2Rotate, opacity: layer2Opacity }}
           className="fixed top-[10%] right-[5%] w-[42vw] aspect-[4/5] z-30 origin-center"
         >
-          <Image src="/images/InTheSky_Main.jpg" alt="" fill className="object-cover grayscale contrast-130" />
+          <Image src="/images/InTheSky_Parallax.png" alt="" fill className="object-cover grayscale contrast-130" />
           <div className="absolute inset-0 shadow-[0_0_100px_rgba(0,0,0,0.9)]" />
         </motion.div>
 
@@ -67,7 +67,7 @@ function ParallaxLayers() {
           style={{ y: layer3Y, scale: layer3Scale, rotate: layer3Rotate, opacity: layer3Opacity }}
           className="fixed top-[30%] left-[25%] w-[32vw] aspect-square z-25 origin-center"
         >
-          <Image src="/images/DarkNight_Main.jpg" alt="" fill className="object-cover grayscale contrast-125 brightness-90" />
+          <Image src="/images/DarkNight_Parallax.png" alt="" fill className="object-cover grayscale contrast-125 brightness-90" />
           <div className="absolute inset-0 shadow-[0_0_120px_rgba(0,0,0,0.95)]" />
         </motion.div>
 
@@ -75,7 +75,7 @@ function ParallaxLayers() {
           style={{ y: layer4Y, x: layer4X, scale: layer4Scale, rotate: layer4Rotate, opacity: layer4Opacity }}
           className="fixed top-[40%] right-[12%] w-[28vw] aspect-[3/4] z-35 origin-center"
         >
-          <Image src="/images/3Saints_Main.jpg" alt="" fill className="object-cover grayscale" />
+          <Image src="/images/ThreeSaints_Parallax.png" alt="" fill className="object-cover grayscale" />
           <div className="absolute inset-0 shadow-[0_0_100px_rgba(0,0,0,0.85)]" />
         </motion.div>
 
@@ -218,7 +218,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/Screen+Shot+Crossroads.jpg" alt="" fill className="object-cover grayscale contrast-110" />
+                <Image src="/images/Camo_Parallax.png" alt="" fill className="object-cover grayscale contrast-110" />
               </div>
             </motion.div>
 
@@ -229,7 +229,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/InTheSky_Main.jpg" alt="" fill className="object-cover grayscale contrast-110" />
+                <Image src="/images/InTheSky_Parallax.png" alt="" fill className="object-cover grayscale contrast-110" />
               </div>
             </motion.div>
 
@@ -240,7 +240,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-square overflow-hidden">
-                <Image src="/images/DarkNight_Main.jpg" alt="" fill className="object-cover grayscale contrast-110" />
+                <Image src="/images/DarkNight_Parallax.png" alt="" fill className="object-cover grayscale contrast-110" />
               </div>
             </motion.div>
 
@@ -251,7 +251,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/3Saints_Main.jpg" alt="" fill className="object-cover grayscale" />
+                <Image src="/images/ThreeSaints_Parallax.png" alt="" fill className="object-cover grayscale" />
               </div>
             </motion.div>
           </section>
