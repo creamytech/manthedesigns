@@ -83,7 +83,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1, duration: 2 }}
-              className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 mix-blend-difference"
+              className="absolute bottom-20 md:bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 mix-blend-difference"
             >
               <motion.div
                 animate={{ y: [0, 8, 0] }}
