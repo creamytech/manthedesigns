@@ -45,7 +45,7 @@ const ORBITS: OrbitProps[] = [
 
 export function SolarSystem() {
   return (
-    <div className="relative w-full h-[150vh] flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex">
+    <div className="relative w-full h-[125vh] -mt-32 flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex">
       {/* Central Anchor (Invisible) */}
       <div className="relative flex items-center justify-center">
         
