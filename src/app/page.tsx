@@ -81,20 +81,19 @@ export default function Home() {
             
             <motion.div 
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              transition={{ delay: 2 }}
-              className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 2 }}
+              className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 mix-blend-difference"
             >
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="opacity-70"
               >
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M7 10l5 5 5-5" />
                 </svg>
               </motion.div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.3em] opacity-50">Scroll</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em]">Scroll</p>
             </motion.div>
           </section>
 
