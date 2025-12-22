@@ -61,24 +61,41 @@ export function SolarSystem() {
             transformStyle: "preserve-3d"
           }}
         >
-          {/* Simple Clean Dark Sphere */}
-          <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_60px_rgba(255,255,255,0.1)]">
+          {/* Custom Eyeball SVG */}
+          <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_60px_rgba(255,255,255,0.15)]">
             <defs>
-              <radialGradient id="deepDark" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
-                <stop offset="0%" stopColor="#333" />
+              <radialGradient id="scleraGrad" cx="50%" cy="50%" r="50%" fx="40%" fy="40%">
+                <stop offset="60%" stopColor="#EFECE5" />
+                <stop offset="95%" stopColor="#8A8884" />
+                <stop offset="100%" stopColor="#000" />
+              </radialGradient>
+              <radialGradient id="irisGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="50%" stopColor="#1a1a1a" />
+                <stop offset="90%" stopColor="#333" />
                 <stop offset="100%" stopColor="#000" />
               </radialGradient>
             </defs>
             
-            {/* Main sphere body with deep gradient */}
-            <circle cx="100" cy="100" r="90" fill="url(#deepDark)" />
+            {/* Sclera (Eyeball White) */}
+            <circle cx="100" cy="100" r="90" fill="url(#scleraGrad)" />
             
-            {/* Subtle rim light */}
-            <circle cx="100" cy="100" r="90" fill="none" stroke="#222" strokeWidth="1" opacity="0.5" />
+            {/* Iris Container */}
+            <g transform="translate(100 100)">
+              <circle r="50" fill="url(#irisGrad)" />
+              {/* Iris Striations */}
+              <g opacity="0.4" stroke="#000" strokeWidth="0.5">
+                {[...Array(24)].map((_, i) => (
+                   <line key={i} x1="0" y1="20" x2="0" y2="48" transform={`rotate(${i * 15})`} />
+                ))}
+              </g>
+            </g>
+
+            {/* Pupil */}
+            <circle cx="100" cy="100" r="22" fill="#000" />
             
-            {/* Very subtle inner pulse/core */}
-            <circle cx="100" cy="100" r="30" fill="#000" />
-            <circle cx="100" cy="100" r="80" fill="none" stroke="#111" strokeWidth="0.5" />
+            {/* Gloss/Reflection */}
+            <ellipse cx="75" cy="75" rx="15" ry="10" fill="#fff" opacity="0.6" transform="rotate(-45 75 75)" />
+            <circle cx="115" cy="115" r="5" fill="#fff" opacity="0.3" />
           </svg>
         </div>
         
