@@ -6,6 +6,7 @@ import { Threshold } from "@/components/animations/Threshold";
 import { Navigation } from "@/components/layout/Navigation";
 import { Gallery } from "@/components/gallery/Gallery";
 import Image from "next/image";
+import Link from "next/link";
 
 function ParallaxLayers() {
   const { scrollYProgress } = useScroll();
@@ -58,7 +59,7 @@ function ParallaxLayers() {
           style={{ y: layer2Y, x: layer2X, scale: layer2Scale, rotate: layer2Rotate, opacity: layer2Opacity }}
           className="fixed top-[10%] right-[5%] w-[42vw] aspect-[4/5] z-30 origin-center"
         >
-          <Image src="/images/EYE+IN+THE+SKY.jpg" alt="" fill className="object-cover grayscale contrast-130" />
+          <Image src="/images/InTheSky_Main.jpg" alt="" fill className="object-cover grayscale contrast-130" />
           <div className="absolute inset-0 shadow-[0_0_100px_rgba(0,0,0,0.9)]" />
         </motion.div>
 
@@ -66,7 +67,7 @@ function ParallaxLayers() {
           style={{ y: layer3Y, scale: layer3Scale, rotate: layer3Rotate, opacity: layer3Opacity }}
           className="fixed top-[30%] left-[25%] w-[32vw] aspect-square z-25 origin-center"
         >
-          <Image src="/images/DARK+NIGHT.jpg" alt="" fill className="object-cover grayscale contrast-125 brightness-90" />
+          <Image src="/images/DarkNight_Main.jpg" alt="" fill className="object-cover grayscale contrast-125 brightness-90" />
           <div className="absolute inset-0 shadow-[0_0_120px_rgba(0,0,0,0.95)]" />
         </motion.div>
 
@@ -74,7 +75,7 @@ function ParallaxLayers() {
           style={{ y: layer4Y, x: layer4X, scale: layer4Scale, rotate: layer4Rotate, opacity: layer4Opacity }}
           className="fixed top-[40%] right-[12%] w-[28vw] aspect-[3/4] z-35 origin-center"
         >
-          <Image src="/images/3+SAINTS.jpg" alt="" fill className="object-cover" />
+          <Image src="/images/3Saints_Main.jpg" alt="" fill className="object-cover grayscale" />
           <div className="absolute inset-0 shadow-[0_0_100px_rgba(0,0,0,0.85)]" />
         </motion.div>
 
@@ -97,10 +98,10 @@ function ParallaxLayers() {
       {/* Gallery - Desktop */}
       <motion.section 
         style={{ opacity: galleryOpacity, y: galleryY }}
-        className="hidden md:block relative z-50 px-8 pt-60 pb-80 bg-[#050505]"
+        className="hidden md:block relative z-50 px-8 pt-40 pb-32 bg-[#050505]"
       >
         <div className="max-w-[1600px] mx-auto">
-          <div className="mb-40 text-center">
+          <div className="mb-20 text-center">
             <motion.div 
               className="w-px h-16 bg-foreground/20 mx-auto mb-12"
               initial={{ scaleY: 0 }}
@@ -112,6 +113,15 @@ function ParallaxLayers() {
             <h2 className="font-serif text-5xl italic opacity-60">Selected Works</h2>
           </div>
           <Gallery />
+          
+          <div className="mt-20 text-center">
+            <Link 
+              href="/works"
+              className="inline-block border border-foreground/20 px-12 py-4 text-xs font-mono uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all duration-500"
+            >
+              View Complete Archive
+            </Link>
+          </div>
         </div>
       </motion.section>
     </>
@@ -219,7 +229,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/EYE+IN+THE+SKY.jpg" alt="" fill className="object-cover grayscale contrast-110" />
+                <Image src="/images/InTheSky_Main.jpg" alt="" fill className="object-cover grayscale contrast-110" />
               </div>
             </motion.div>
 
@@ -230,7 +240,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-square overflow-hidden">
-                <Image src="/images/DARK+NIGHT.jpg" alt="" fill className="object-cover grayscale contrast-110" />
+                <Image src="/images/DarkNight_Main.jpg" alt="" fill className="object-cover grayscale contrast-110" />
               </div>
             </motion.div>
 
@@ -241,7 +251,7 @@ export default function Home() {
               transition={{ duration: 1 }}
             >
               <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/3+SAINTS.jpg" alt="" fill className="object-cover" />
+                <Image src="/images/3Saints_Main.jpg" alt="" fill className="object-cover grayscale" />
               </div>
             </motion.div>
           </section>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Artwork, artworks } from "@/data/artworks";
 import Image from "next/image";
 import Link from "next/link";
+import { Slideshow } from "./Slideshow";
 
 export function Gallery() {
   const featuredArtworks = artworks.slice(0, 6);
@@ -18,6 +19,8 @@ export function Gallery() {
 }
 
 function GalleryItem({ artwork, index }: { artwork: Artwork; index: number }) {
+  const hasSlideshow = artwork.images && artwork.images.length > 1;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -28,21 +31,28 @@ function GalleryItem({ artwork, index }: { artwork: Artwork; index: number }) {
     >
       <Link href={`/works/${artwork.id}`} className="block relative">
         <div className="relative aspect-[3/4] overflow-hidden bg-[#0a0a0a]">
-           <Image
-             src={artwork.imageUrl}
-             alt={artwork.title}
-             fill
-             className={`object-cover transition-all duration-700 ease-out group-hover:scale-[1.02] contrast-110 brightness-90 group-hover:brightness-100 ${
-               artwork.medium !== "Plaster" ? "grayscale" : ""
-             }`}
-             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-           />
+           {hasSlideshow ? (
+             <Slideshow 
+               images={artwork.images!} 
+               title={artwork.title} 
+               keepColor={artwork.keepColor || artwork.medium === "Plaster"}
+             />
+           ) : (
+             <Image
+               src={artwork.imageUrl}
+               alt={artwork.title}
+               fill
+               className={`object-cover transition-all duration-700 ease-out group-hover:scale-[1.02] contrast-110 brightness-90 group-hover:brightness-100 ${
+                 !artwork.keepColor && artwork.medium !== "Plaster" ? "grayscale" : ""
+               }`}
+               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+             />
+           )}
         </div>
         
         {/* Title and year - visible on mobile, hover on desktop */}
         <div className="mt-4 flex justify-between items-baseline opacity-60 md:opacity-0 md:group-hover:opacity-70 transition-opacity duration-500">
             <span className="font-serif text-base md:text-lg italic">{artwork.title}</span>
-            <span className="font-mono text-[8px] md:text-[9px] uppercase tracking-[0.3em]">{artwork.year}</span>
         </div>
       </Link>
     </motion.div>

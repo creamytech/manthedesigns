@@ -28,7 +28,7 @@ export default function WorkPage() {
       <Grain />
       <Navigation />
 
-      <div className="pt-24 md:pt-32 pb-20 md:pb-32 px-4 md:px-12 max-w-[1600px] mx-auto min-h-screen">
+      <div className="pt-24 md:pt-32 pb-20 md:pb-20 px-4 md:px-12 max-w-[1600px] mx-auto">
         {/* Back link */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,22 +43,28 @@ export default function WorkPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 lg:gap-24 items-start">
           {/* Image Section - Dominant */}
+          {/* Image Section - Dominant */}
           <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              className="relative"
+              className="relative space-y-12"
           >
-             <div className="relative aspect-[4/5] bg-ebony overflow-hidden">
-                <Image
-                  src={artwork.imageUrl}
-                  alt={artwork.title}
-                  fill
-                  className="object-cover"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                />
-             </div>
+             {(artwork.images || [artwork.imageUrl]).map((img, idx) => (
+                <div key={idx} className="relative w-full bg-ebony overflow-hidden">
+                    <Image
+                      src={img}
+                      alt={`${artwork.title} - View ${idx + 1}`}
+                      width={1200}
+                      height={1600}
+                      className={`w-full h-auto object-cover ${
+                          !artwork.keepColor && artwork.medium !== "Plaster" ? "grayscale contrast-110 brightness-95" : ""
+                      }`}
+                      priority={idx === 0}
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                    />
+                </div>
+             ))}
           </motion.div>
 
           {/* Details Section - Quiet */}
@@ -79,17 +85,13 @@ export default function WorkPage() {
                   </h1>
                 </div>
                 
-                <p className="font-serif text-lg md:text-xl leading-relaxed opacity-70 max-w-md">
-                   An original study in {artwork.medium.toLowerCase()}, exploring the boundaries between form and psychological space.
+                <p className="font-serif text-lg md:text-xl leading-relaxed opacity-70 max-w-md whitespace-pre-wrap">
+                   {artwork.description}
                 </p>
               </div>
 
               {/* Metadata */}
               <div className="grid grid-cols-2 gap-8 py-8 border-y border-foreground/10">
-                <div className="space-y-2">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40 block">Year</span>
-                  <span className="font-mono text-sm opacity-80">{artwork.year}</span>
-                </div>
                 <div className="space-y-2">
                   <span className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40 block">Dimensions</span>
                   <span className="font-mono text-sm opacity-80">{artwork.dimensions}</span>
@@ -97,10 +99,6 @@ export default function WorkPage() {
                 <div className="space-y-2">
                   <span className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40 block">Medium</span>
                   <span className="font-mono text-sm opacity-80">{artwork.medium}</span>
-                </div>
-                <div className="space-y-2">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40 block">Authenticity</span>
-                  <span className="font-mono text-sm opacity-80">Signed Original</span>
                 </div>
               </div>
 

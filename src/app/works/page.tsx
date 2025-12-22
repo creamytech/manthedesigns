@@ -6,6 +6,7 @@ import { Navigation } from "@/components/layout/Navigation";
 import { Grain } from "@/components/ui/Grain";
 import Link from "next/link";
 import Image from "next/image";
+import { Slideshow } from "@/components/gallery/Slideshow";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MEDIUMS = ["All", "Graphite", "Ink", "Plaster"] as const;
@@ -38,7 +39,7 @@ export default function WorksPage() {
       <Grain />
       <Navigation />
 
-      <div className="pt-28 md:pt-40 pb-40 md:pb-80 px-4 md:px-12 max-w-[1800px] mx-auto">
+      <div className="pt-28 md:pt-40 pb-20 md:pb-32 px-4 md:px-12 max-w-[1800px] mx-auto">
         {/* Filter Bar */}
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
@@ -77,28 +78,38 @@ export default function WorksPage() {
             exit={{ opacity: 0 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-32"
           >
-            {filteredArtworks.map((artwork) => (
+            {filteredArtworks.map((artwork) => {
+              const hasSlideshow = artwork.images && artwork.images.length > 1;
+              return (
               <motion.div key={artwork.id} variants={item} className="group">
                 <Link href={`/works/${artwork.id}`} className="block relative">
                   <div className="relative aspect-[4/5] overflow-hidden bg-ebony">
-                     <Image
-                       src={artwork.imageUrl}
-                       alt={artwork.title}
-                       fill
-                       className={`object-cover transition-all duration-[2000ms] ease-in-out group-hover:scale-[1.03] contrast-110 brightness-95 group-hover:brightness-100 ${
-                         artwork.medium !== "Plaster" ? "grayscale" : ""
-                       }`}
-                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                     />
+                     {hasSlideshow ? (
+                       <Slideshow 
+                         images={artwork.images!} 
+                         title={artwork.title} 
+                         keepColor={artwork.keepColor || artwork.medium === "Plaster"}
+                       />
+                     ) : (
+                       <Image
+                         src={artwork.imageUrl}
+                         alt={artwork.title}
+                         fill
+                         className={`object-cover transition-all duration-[2000ms] ease-in-out group-hover:scale-[1.03] contrast-110 brightness-95 group-hover:brightness-100 ${
+                           !artwork.keepColor && artwork.medium !== "Plaster" ? "grayscale" : ""
+                         }`}
+                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                       />
+                     )}
                   </div>
                   {/* Title and year - more visible */}
                   <div className="mt-6 flex justify-between items-baseline opacity-40 group-hover:opacity-80 transition-opacity duration-700">
                       <span className="font-serif text-lg italic">{artwork.title}</span>
-                      <span className="font-mono text-[9px] uppercase tracking-widest">{artwork.year}</span>
+                      <span className="font-mono text-[9px] uppercase tracking-widest">${artwork.price}</span>
                   </div>
                 </Link>
               </motion.div>
-            ))}
+            )})}
           </motion.div>
         </AnimatePresence>
 
