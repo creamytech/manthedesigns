@@ -85,7 +85,7 @@ export function CartDrawer() {
                         <div className="space-y-2">
                           <h3 className="font-serif text-lg italic leading-tight truncate">{item.artwork.title}</h3>
                           <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40">
-                            {item.artwork.medium} — {item.artwork.year}
+                            {item.artwork.medium}
                           </p>
                         </div>
                         
