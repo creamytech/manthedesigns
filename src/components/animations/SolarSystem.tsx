@@ -48,6 +48,17 @@ export function SolarSystem() {
     <div className="relative w-full h-[125vh] -mt-32 flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex">
       {/* Central Anchor (Invisible) */}
       <div className="relative flex items-center justify-center">
+        {/* Central Object */}
+        <div className="absolute z-10 w-[25vw] h-[25vw] rounded-full overflow-hidden">
+          <Image
+            src="/images/OrbitCenter.png"
+            alt="Central Artwork"
+            fill
+            className="object-cover grayscale contrast-125"
+            priority
+          />
+          <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)]" />
+        </div>
         
         {ORBITS.map((orbit, index) => (
           <div
