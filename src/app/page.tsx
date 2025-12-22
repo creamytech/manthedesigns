@@ -86,15 +86,15 @@ export default function Home() {
               className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
               <motion.div
-                animate={{ y: [0, 6, 0] }}
+                animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="opacity-50"
+                className="opacity-70"
               >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M7 10l5 5 5-5" />
                 </svg>
               </motion.div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40">Scroll</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.3em] opacity-50">Scroll</p>
             </motion.div>
           </section>
 
@@ -102,14 +102,16 @@ export default function Home() {
           <SolarSystem />
           
           {/* Anchor Section - Desktop only */}
-          <AnchorSection />
+          <div className="pt-0 md:pt-32">
+            <AnchorSection />
+          </div>
           
           {/* Gallery - Unified */}
           <motion.section 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="relative z-50 px-8 pt-16 md:pt-40 pb-32 bg-[#050505]"
+            className="relative z-50 px-8 pt-16 md:pt-24 pb-32 bg-[#050505]"
           >
             <div className="max-w-[1600px] mx-auto">
               <div className="mb-10 md:mb-20 text-center">
