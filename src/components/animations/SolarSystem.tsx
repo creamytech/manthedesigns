@@ -8,55 +8,56 @@ interface OrbitProps {
   imageSrc: string;
   imageAlt?: string;
   size: string; // e.g. "20vw"
+  radius: string;
 }
 
 const ORBITS: OrbitProps[] = [
   {
     offset: 0,
-    duration: "40s", // Faster for better 3D effect visibility
+    duration: "45s", // Different speeds
     imageSrc: "/images/Camo_Parallax.png",
     size: "18vw",
+    radius: "30vw",
+  },
+  {
+    offset: 45,
+    duration: "55s",
+    imageSrc: "/images/InTheSky_Parallax.png",
+    size: "22vw",
+    radius: "45vw",
   },
   {
     offset: 90,
-    duration: "40s",
-    imageSrc: "/images/InTheSky_Parallax.png",
-    size: "22vw",
-  },
-  {
-    offset: 180,
-    duration: "40s",
+    duration: "70s",
     imageSrc: "/images/DarkNight_Parallax.png",
     size: "20vw",
+    radius: "60vw",
   },
   {
-    offset: 270,
-    duration: "40s",
+    offset: 135,
+    duration: "90s",
     imageSrc: "/images/ThreeSaints_Parallax.png",
     size: "24vw",
+    radius: "75vw",
   },
 ];
 
 export function SolarSystem() {
   return (
-    <div className="relative w-full h-[125vh] -mt-32 flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex" style={{ perspective: "2000px" }}>
+    <div className="relative w-full h-[125vh] -mt-32 flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex" style={{ perspective: "1500px" }}>
       {/* 3D Scene Container */}
       <div 
         className="relative flex items-center justify-center will-change-transform"
         style={{ 
           transformStyle: "preserve-3d",
-          transform: "rotateX(75deg) rotateY(15deg)", // The 3D Tilt
+          transform: "rotateX(60deg) rotateY(0deg)", // Reduced tilt, remove Y rotation for cleaner look
         }}
       >
-        {/* Central Object (SVG) - Stays flat to camera by counter-rotating the tilt? 
-            Actually, for a sphere, we might want it to just sit there. 
-            If we want it to look 3D, we can rotate it or just billboard it.
-            Billboarding the center object:
-        */}
+        {/* Central Object (SVG) */}
         <div 
           className="absolute z-10 w-[20vw] h-[20vw] flex items-center justify-center"
           style={{ 
-            transform: "rotateY(-15deg) rotateX(-75deg)", // Counter-tilt to face camera
+            transform: "rotateX(-60deg)", // Counter-tilt
             transformStyle: "preserve-3d"
           }}
         >
@@ -76,65 +77,50 @@ export function SolarSystem() {
                 </feMerge>
               </filter>
             </defs>
-            {/* Wireframe longitude lines */}
             <circle cx="100" cy="100" r="90" fill="url(#sphereGrad)" stroke="none" />
             <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(0 100 100)" opacity="0.5" />
             <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(45 100 100)" opacity="0.5" />
             <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(90 100 100)" opacity="0.5" />
             <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(135 100 100)" opacity="0.5" />
-            
-            {/* Inner core glow */}
             <circle cx="100" cy="100" r="30" fill="#222" filter="url(#glow)" opacity="0.8" />
           </svg>
         </div>
-
-        {/* Orbit Path (Visual Ring) */}
-        <div 
-          className="absolute w-[60vw] h-[60vw] rounded-full border-[1px] border-bone/20 opacity-40 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
-          style={{ transform: "translateZ(0)" }}
-        />
 
         {/* Orbiting Items */}
         {ORBITS.map((orbit, index) => (
           <div
             key={index}
-            className="absolute flex items-center justify-center will-change-transform"
+            className="absolute flex items-center justify-center rounded-full border-[1px] border-bone/10 will-change-transform"
             style={{
-              width: "60vw",
-              height: "60vw",
+              width: orbit.radius,
+              height: orbit.radius,
               transformStyle: "preserve-3d",
               animation: `spin ${orbit.duration} linear infinite`,
+              animationDelay: `-${index * 15}s` // Stagger start
             }}
           >
-            {/* Positioner (Places item on the ring) */}
+            {/* Positioner */}
             <div 
               className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
               style={{
                  width: orbit.size, 
                  height: `calc(${orbit.size} * 1.25)`,
-                 // Apply fixed offset rotation to distribute them
-                 // We can't just adding delay because we are spinning the container.
-                 // Actually, simpler: We have 4 containers spinning.
-                 // Just adding 'animation-delay' works if the animation is simple spin.
-                 // But for equal distribution, 'animation-delay' is perfect.
-                 animationDelay: `-${(parseInt(orbit.duration) / 360) * orbit.offset}s` // Calc delay based on offset degrees
               }} 
             >
               {/* Counter-Rotator (Billboarding) */}
               <div 
                  className="w-full h-full relative will-change-transform"
                  style={{
-                    // 1. Counter-spin the orbit rotation
                     animation: `counter-spin ${orbit.duration} linear infinite`,
-                    animationDelay: `-${(parseInt(orbit.duration) / 360) * orbit.offset}s`,
+                    animationDelay: `-${index * 15}s`,
                     transformStyle: "preserve-3d"
                  }}
               >
-                 {/* 2. Counter-tilt the Scene tilt to face camera */}
+                 {/* Counter-tilt */}
                  <div 
                     className="w-full h-full relative"
                     style={{
-                       transform: "rotateY(-15deg) rotateX(-75deg)" 
+                       transform: "rotateX(-60deg)" // Match container tilt
                     }}
                  >
                     <Image
