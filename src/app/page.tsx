@@ -109,12 +109,12 @@ export default function Home() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="relative z-50 px-8 pt-40 pb-32 bg-[#050505]"
+            className="relative z-50 px-8 pt-16 md:pt-40 pb-32 bg-[#050505]"
           >
             <div className="max-w-[1600px] mx-auto">
-              <div className="mb-20 text-center">
+              <div className="mb-10 md:mb-20 text-center">
                 <motion.div 
-                  className="w-px h-16 bg-foreground/20 mx-auto mb-12"
+                  className="w-px h-10 md:h-16 bg-foreground/20 mx-auto mb-8 md:mb-12"
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
                   viewport={{ once: true }}
