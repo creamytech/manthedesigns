@@ -44,7 +44,7 @@ const ORBITS: OrbitProps[] = [
 
 export function SolarSystem() {
   return (
-    <div className="relative w-full h-[125vh] -mt-32 flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex" style={{ perspective: "1500px" }}>
+    <div className="relative w-full h-[125vh] -mt-32 flex items-center justify-center overflow-hidden bg-[#050505] hidden md:flex" style={{ perspective: "2500px" }}>
       {/* 3D Scene Container */}
       <div 
         className="relative flex items-center justify-center will-change-transform"
@@ -61,37 +61,30 @@ export function SolarSystem() {
             transformStyle: "preserve-3d"
           }}
         >
-          {/* Psychological Design: Hypnotic Eye / Maze */}
-          <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_50px_rgba(255,255,255,0.15)]">
+          {/* Simple Clean Dark Sphere */}
+          <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_60px_rgba(255,255,255,0.1)]">
             <defs>
-              <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#444" />
-                <stop offset="50%" stopColor="#111" />
-                <stop offset="100%" stopColor="#222" />
-              </linearGradient>
+              <radialGradient id="deepDark" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+                <stop offset="0%" stopColor="#333" />
+                <stop offset="100%" stopColor="#000" />
+              </radialGradient>
             </defs>
             
-            {/* Outer Ring */}
-            <circle cx="100" cy="100" r="98" fill="none" stroke="#333" strokeWidth="1" opacity="0.5" />
-            <circle cx="100" cy="100" r="90" fill="none" stroke="#444" strokeWidth="2" strokeDasharray="10 5" className="animate-[spin_60s_linear_infinite]" />
+            {/* Main sphere body with deep gradient */}
+            <circle cx="100" cy="100" r="90" fill="url(#deepDark)" />
             
-            {/* Hypnotic Iris Layers */}
-            <g className="animate-[spin_40s_linear_infinite_reverse]">
-              <path d="M100,20 Q140,20 180,100 Q140,180 100,180 Q60,180 20,100 Q60,20 100,20 Z" fill="none" stroke="url(#metal)" strokeWidth="1" opacity="0.7" />
-              <path d="M100,20 Q140,20 180,100 Q140,180 100,180 Q60,180 20,100 Q60,20 100,20 Z" fill="none" stroke="#666" strokeWidth="0.5" transform="rotate(60 100 100)" opacity="0.5" />
-              <path d="M100,20 Q140,20 180,100 Q140,180 100,180 Q60,180 20,100 Q60,20 100,20 Z" fill="none" stroke="#666" strokeWidth="0.5" transform="rotate(-60 100 100)" opacity="0.5" />
-            </g>
-
-            {/* Inner Pupil / Void */}
-            <circle cx="100" cy="100" r="35" fill="#000" stroke="#333" strokeWidth="1" />
-            <circle cx="100" cy="100" r="25" fill="#050505" />
-            <circle cx="100" cy="100" r="10" fill="#111" className="animate-pulse" />
+            {/* Subtle rim light */}
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#222" strokeWidth="1" opacity="0.5" />
+            
+            {/* Very subtle inner pulse/core */}
+            <circle cx="100" cy="100" r="30" fill="#000" />
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#111" strokeWidth="0.5" />
           </svg>
         </div>
         
         {/* Visual Orbit Track */}
         <div 
-          className="absolute w-[60vw] h-[60vw] rounded-full border-[1px] border-bone/20 opacity-30 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+          className="absolute w-[60vw] h-[60vw] rounded-full border-[1px] border-bone/10 opacity-20"
           style={{ transform: "translateZ(0)" }}
         />
 
@@ -114,6 +107,7 @@ export function SolarSystem() {
               style={{
                  width: orbit.size, 
                  height: `calc(${orbit.size} * 1.6)`, // Taller portrait ratio
+                 transformStyle: "preserve-3d", // CRITICAL FIX: Prevent flattening
               }} 
             >
               {/* Counter-Rotator (Billboarding) */}
