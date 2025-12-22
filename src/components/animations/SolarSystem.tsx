@@ -44,7 +44,7 @@ const ORBITS: OrbitProps[] = [
 
 export function SolarSystem() {
   return (
-    <div className="relative w-full h-[80vh] md:h-[125vh] -mt-16 md:-mt-32 flex items-center justify-center overflow-hidden bg-[#050505] flex" style={{ perspective: "2500px" }}>
+    <div className="relative w-full h-[70vh] md:h-[125vh] -mt-16 md:-mt-32 flex items-center justify-center overflow-hidden bg-[#050505] flex" style={{ perspective: "2500px" }}>
       {/* 3D Scene Container */}
       <div 
         className="relative flex items-center justify-center will-change-transform"

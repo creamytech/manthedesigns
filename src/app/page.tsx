@@ -42,7 +42,7 @@ export default function Home() {
           <Navigation />
           
           {/* Hero Section - Works on both mobile and desktop */}
-          <section className="min-h-screen relative flex items-center justify-center overflow-hidden">
+          <section className="min-h-[70vh] md:min-h-screen relative flex items-center justify-center overflow-hidden">
             <motion.div 
               initial={{ opacity: 0, scale: 1.1 }}
               animate={{ opacity: 0.35, scale: 1 }}
