@@ -83,8 +83,11 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
               transition={{ delay: 2 }}
-              className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 w-px h-12 md:h-20 bg-gradient-to-b from-foreground to-transparent"
-            />
+              className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            >
+              <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-transparent via-foreground to-transparent animate-pulse" />
+              <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-60">Scroll</p>
+            </motion.div>
           </section>
 
           {/* Desktop: Solar System Orbit Animation */}
