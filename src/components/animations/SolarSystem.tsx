@@ -71,7 +71,7 @@ export function SolarSystem() {
                   animation: `orbit ${orbit.duration} linear infinite ${orbit.reverse ? 'normal' : 'reverse'}`,
                 }}
               >
-                <div className="relative w-full h-full shadow-[0_0_50px_rgba(0,0,0,0.8)]">
+                <div className="relative w-full h-full">
                   <Image
                     src={orbit.imageSrc}
                     alt={orbit.imageAlt || "Artwork"}
