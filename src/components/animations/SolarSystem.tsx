@@ -14,32 +14,32 @@ interface OrbitProps {
 
 const ORBITS: OrbitProps[] = [
   {
-    radius: "25vw",
+    radius: "60vw",
     duration: "120s",
     imageSrc: "/images/Camo_Parallax.png",
     size: "18vw",
     delay: "0s",
   },
   {
-    radius: "40vw",
+    radius: "60vw",
     duration: "120s",
     imageSrc: "/images/InTheSky_Parallax.png",
     size: "22vw",
-    delay: "-40s", // 120 degrees offset
+    delay: "-30s",
   },
   {
-    radius: "55vw",
+    radius: "60vw",
     duration: "120s",
     imageSrc: "/images/DarkNight_Parallax.png",
     size: "20vw",
-    delay: "-80s", // 240 degrees offset (relative to 0)
+    delay: "-60s",
   },
   {
-    radius: "70vw",
+    radius: "60vw",
     duration: "120s",
     imageSrc: "/images/ThreeSaints_Parallax.png",
     size: "24vw",
-    delay: "-10s", // Just slightly behind the first one but outer
+    delay: "-90s",
   },
 ];
 
@@ -60,10 +60,13 @@ export function SolarSystem() {
           <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)]" />
         </div>
         
+        {/* Single Visible Track */}
+        <div className="absolute w-[60vw] h-[60vw] rounded-full border border-foreground/10 opacity-50" />
+
         {ORBITS.map((orbit, index) => (
           <div
             key={index}
-            className="absolute flex items-center justify-center rounded-full border border-foreground/5 will-change-transform"
+            className="absolute flex items-center justify-center rounded-full will-change-transform" // Removed border from individual rings, using localized visible track
             style={{
               width: orbit.radius,
               height: orbit.radius,
