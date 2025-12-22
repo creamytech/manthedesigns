@@ -14,31 +14,31 @@ interface OrbitProps {
 const ORBITS: OrbitProps[] = [
   {
     offset: 0,
-    duration: "45s", // Different speeds
+    duration: "80s",
     imageSrc: "/images/Camo_Parallax.png",
     size: "18vw",
-    radius: "30vw",
-  },
-  {
-    offset: 45,
-    duration: "55s",
-    imageSrc: "/images/InTheSky_Parallax.png",
-    size: "22vw",
-    radius: "45vw",
+    radius: "60vw",
   },
   {
     offset: 90,
-    duration: "70s",
+    duration: "80s",
+    imageSrc: "/images/InTheSky_Parallax.png",
+    size: "22vw",
+    radius: "60vw",
+  },
+  {
+    offset: 180,
+    duration: "80s",
     imageSrc: "/images/DarkNight_Parallax.png",
     size: "20vw",
     radius: "60vw",
   },
   {
-    offset: 135,
-    duration: "90s",
+    offset: 270,
+    duration: "80s",
     imageSrc: "/images/ThreeSaints_Parallax.png",
     size: "24vw",
-    radius: "75vw",
+    radius: "60vw",
   },
 ];
 
@@ -50,53 +50,62 @@ export function SolarSystem() {
         className="relative flex items-center justify-center will-change-transform"
         style={{ 
           transformStyle: "preserve-3d",
-          transform: "rotateX(60deg) rotateY(0deg)", // Reduced tilt, remove Y rotation for cleaner look
+          transform: "rotateX(70deg) rotateY(0deg)", // Strong 3D tilt
         }}
       >
         {/* Central Object (SVG) */}
         <div 
-          className="absolute z-10 w-[20vw] h-[20vw] flex items-center justify-center"
+          className="absolute z-10 w-[22vw] h-[22vw] flex items-center justify-center"
           style={{ 
-            transform: "rotateX(-60deg)", // Counter-tilt
+            transform: "rotateX(-70deg)", // Counter-tilt
             transformStyle: "preserve-3d"
           }}
         >
-          {/* Cool SVG Sphere */}
-          <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+          {/* Psychological Design: Hypnotic Eye / Maze */}
+          <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_50px_rgba(255,255,255,0.15)]">
             <defs>
-              <radialGradient id="sphereGrad" cx="30%" cy="30%" r="70%">
-                <stop offset="0%" stopColor="#333" />
+              <linearGradient id="metal" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#444" />
                 <stop offset="50%" stopColor="#111" />
-                <stop offset="100%" stopColor="#000" />
-              </radialGradient>
-              <filter id="glow">
-                <feGaussianBlur stdDeviation="5" result="coloredBlur" />
-                <feMerge>
-                  <feMergeNode in="coloredBlur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
+                <stop offset="100%" stopColor="#222" />
+              </linearGradient>
             </defs>
-            <circle cx="100" cy="100" r="90" fill="url(#sphereGrad)" stroke="none" />
-            <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(0 100 100)" opacity="0.5" />
-            <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(45 100 100)" opacity="0.5" />
-            <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(90 100 100)" opacity="0.5" />
-            <ellipse cx="100" cy="100" rx="90" ry="20" fill="none" stroke="#333" strokeWidth="1" transform="rotate(135 100 100)" opacity="0.5" />
-            <circle cx="100" cy="100" r="30" fill="#222" filter="url(#glow)" opacity="0.8" />
+            
+            {/* Outer Ring */}
+            <circle cx="100" cy="100" r="98" fill="none" stroke="#333" strokeWidth="1" opacity="0.5" />
+            <circle cx="100" cy="100" r="90" fill="none" stroke="#444" strokeWidth="2" strokeDasharray="10 5" className="animate-[spin_60s_linear_infinite]" />
+            
+            {/* Hypnotic Iris Layers */}
+            <g className="animate-[spin_40s_linear_infinite_reverse]">
+              <path d="M100,20 Q140,20 180,100 Q140,180 100,180 Q60,180 20,100 Q60,20 100,20 Z" fill="none" stroke="url(#metal)" strokeWidth="1" opacity="0.7" />
+              <path d="M100,20 Q140,20 180,100 Q140,180 100,180 Q60,180 20,100 Q60,20 100,20 Z" fill="none" stroke="#666" strokeWidth="0.5" transform="rotate(60 100 100)" opacity="0.5" />
+              <path d="M100,20 Q140,20 180,100 Q140,180 100,180 Q60,180 20,100 Q60,20 100,20 Z" fill="none" stroke="#666" strokeWidth="0.5" transform="rotate(-60 100 100)" opacity="0.5" />
+            </g>
+
+            {/* Inner Pupil / Void */}
+            <circle cx="100" cy="100" r="35" fill="#000" stroke="#333" strokeWidth="1" />
+            <circle cx="100" cy="100" r="25" fill="#050505" />
+            <circle cx="100" cy="100" r="10" fill="#111" className="animate-pulse" />
           </svg>
         </div>
+        
+        {/* Visual Orbit Track */}
+        <div 
+          className="absolute w-[60vw] h-[60vw] rounded-full border-[1px] border-bone/20 opacity-30 shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+          style={{ transform: "translateZ(0)" }}
+        />
 
         {/* Orbiting Items */}
         {ORBITS.map((orbit, index) => (
           <div
             key={index}
-            className="absolute flex items-center justify-center rounded-full border-[1px] border-bone/10 will-change-transform"
+            className="absolute flex items-center justify-center rounded-full will-change-transform"
             style={{
               width: orbit.radius,
               height: orbit.radius,
               transformStyle: "preserve-3d",
               animation: `spin ${orbit.duration} linear infinite`,
-              animationDelay: `-${index * 15}s` // Stagger start
+              animationDelay: `-${(parseInt(orbit.duration) / 360) * orbit.offset}s` // Exact degree offset delay
             }}
           >
             {/* Positioner */}
@@ -112,7 +121,7 @@ export function SolarSystem() {
                  className="w-full h-full relative will-change-transform"
                  style={{
                     animation: `counter-spin ${orbit.duration} linear infinite`,
-                    animationDelay: `-${index * 15}s`,
+                    animationDelay: `-${(parseInt(orbit.duration) / 360) * orbit.offset}s`,
                     transformStyle: "preserve-3d"
                  }}
               >
@@ -120,7 +129,7 @@ export function SolarSystem() {
                  <div 
                     className="w-full h-full relative"
                     style={{
-                       transform: "rotateX(-60deg)" // Match container tilt
+                       transform: "rotateX(-70deg)" // Match container tilt
                     }}
                  >
                     <Image
