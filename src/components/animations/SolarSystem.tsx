@@ -113,7 +113,7 @@ export function SolarSystem() {
               className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
               style={{
                  width: orbit.size, 
-                 height: `calc(${orbit.size} * 1.25)`,
+                 height: `calc(${orbit.size} * 1.6)`, // Taller portrait ratio
               }} 
             >
               {/* Counter-Rotator (Billboarding) */}
@@ -136,7 +136,7 @@ export function SolarSystem() {
                       src={orbit.imageSrc}
                       alt={orbit.imageAlt || "Artwork"}
                       fill
-                      className="object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
+                      className="object-cover grayscale contrast-125" // Removed hover color
                       sizes={orbit.size}
                       priority={index < 2}
                     />
