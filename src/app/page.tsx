@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useScroll } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Threshold } from "@/components/animations/Threshold";
 import { Navigation } from "@/components/layout/Navigation";
 import { Gallery } from "@/components/gallery/Gallery";
@@ -13,12 +13,6 @@ import Link from "next/link";
 export default function Home() {
   const [hasEntered, setHasEntered] = useState(false);
   const [isChecking, setIsChecking] = useState(true);
-  const containerRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
 
   useEffect(() => {
     // Check session storage on mount
