@@ -85,8 +85,16 @@ export default function Home() {
               transition={{ delay: 2 }}
               className="absolute bottom-8 md:bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
-              <div className="w-[1px] h-12 md:h-16 bg-gradient-to-b from-transparent via-foreground to-transparent animate-pulse" />
-              <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-60">Scroll</p>
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="opacity-50"
+              >
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                  <path d="M7 10l5 5 5-5" />
+                </svg>
+              </motion.div>
+              <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40">Scroll</p>
             </motion.div>
           </section>
 

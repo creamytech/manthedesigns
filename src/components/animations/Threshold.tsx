@@ -97,13 +97,7 @@ export function Threshold({ onEnter }: { onEnter: () => void }) {
                Matthew Manthé
             </motion.h1>
 
-            {/* Thin divider line */}
-            <motion.div 
-               className="mt-10 w-px h-16 bg-foreground/30"
-               initial={{ scaleY: 0, opacity: 0 }}
-               animate={{ scaleY: 1, opacity: 1 }}
-               transition={{ delay: 2, duration: 2, ease: "easeOut" }}
-            />
+
 
             {/* Prompt - only appears when ready */}
             <motion.div
