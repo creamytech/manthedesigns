@@ -15,31 +15,31 @@ interface OrbitProps {
 const ORBITS: OrbitProps[] = [
   {
     radius: "25vw",
-    duration: "45s",
+    duration: "120s",
     imageSrc: "/images/Camo_Parallax.png",
     size: "18vw",
     delay: "0s",
   },
   {
     radius: "40vw",
-    duration: "65s",
+    duration: "120s",
     imageSrc: "/images/InTheSky_Parallax.png",
     size: "22vw",
-    reverse: true,
+    delay: "-40s", // 120 degrees offset
   },
   {
     radius: "55vw",
-    duration: "85s",
+    duration: "120s",
     imageSrc: "/images/DarkNight_Parallax.png",
     size: "20vw",
-    delay: "-20s",
+    delay: "-80s", // 240 degrees offset (relative to 0)
   },
   {
     radius: "70vw",
-    duration: "110s",
+    duration: "120s",
     imageSrc: "/images/ThreeSaints_Parallax.png",
     size: "24vw",
-    reverse: true,
+    delay: "-10s", // Just slightly behind the first one but outer
   },
 ];
 
@@ -68,6 +68,7 @@ export function SolarSystem() {
               width: orbit.radius,
               height: orbit.radius,
               animation: `orbit ${orbit.duration} linear infinite ${orbit.reverse ? 'reverse' : 'normal'}`,
+              animationDelay: orbit.delay,
             }}
           >
             {/* Planet Container - Positioned on the ring */}
@@ -80,6 +81,7 @@ export function SolarSystem() {
                 className="w-full h-full relative will-change-transform"
                 style={{
                   animation: `orbit ${orbit.duration} linear infinite ${orbit.reverse ? 'normal' : 'reverse'}`,
+                  animationDelay: orbit.delay,
                 }}
               >
                 <div className="relative w-full h-full">
