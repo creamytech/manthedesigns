@@ -29,7 +29,7 @@ function GalleryItem({ artwork, index }: { artwork: Artwork; index: number }) {
       transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col group"
     >
-      <Link href={`/works/${artwork.id}`} className="block relative">
+      <Link href={`/gallery/${artwork.id}`} className="block relative">
         <div className="relative aspect-[3/4] overflow-hidden bg-[#0a0a0a]">
            {hasSlideshow ? (
              <Slideshow 

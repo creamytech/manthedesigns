@@ -36,8 +36,8 @@ export default function WorkPage() {
           transition={{ duration: 1 }}
           className="mb-8 md:mb-12"
         >
-          <Link href="/works" className="inline-flex items-center gap-2 md:gap-3 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-50 hover:opacity-100 transition-opacity">
-            <MoveLeft className="w-3 h-3" /> Back to Archive
+          <Link href="/gallery" className="inline-flex items-center gap-2 md:gap-3 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] opacity-50 hover:opacity-100 transition-opacity">
+            <MoveLeft className="w-3 h-3" /> Back to Gallery
           </Link>
         </motion.div>
 

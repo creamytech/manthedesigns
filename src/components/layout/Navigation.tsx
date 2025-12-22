@@ -52,7 +52,7 @@ export function Navigation() {
         gap: '48px' 
       }}>
         <Link 
-          href="/works" 
+          href="/gallery" 
           onClick={() => setIsMobileMenuOpen(false)}
           style={{ 
             fontFamily: 'var(--font-cormorant)', 
@@ -62,7 +62,7 @@ export function Navigation() {
             textDecoration: 'none'
           }}
         >
-          Archive
+          Gallery
         </Link>
         
         <Link 
@@ -76,7 +76,7 @@ export function Navigation() {
             textDecoration: 'none'
           }}
         >
-          Mind
+          About
         </Link>
         
         <Link 
@@ -123,11 +123,11 @@ export function Navigation() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-12 font-mono text-[9px] uppercase tracking-[0.4em] text-white/50">
-          <Link href="/works" className="hover:text-white transition-colors">
-            Archive
+          <Link href="/gallery" className="hover:text-white transition-colors">
+            Gallery
           </Link>
           <Link href="/about" className="hover:text-white transition-colors">
-            Mind
+            About
           </Link>
           <Link href="/contact" className="hover:text-white transition-colors">
             Contact

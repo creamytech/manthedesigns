@@ -121,17 +121,17 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ duration: 1.5 }}
                 />
-                <p className="font-mono text-[9px] uppercase tracking-[0.6em] opacity-30 mb-6">Archive</p>
+                <p className="font-mono text-[9px] uppercase tracking-[0.6em] opacity-30 mb-6">Gallery</p>
                 <h2 className="font-serif text-5xl italic opacity-60">Selected Works</h2>
               </div>
               <Gallery />
               
               <div className="mt-20 text-center">
                 <Link 
-                  href="/works"
+                  href="/gallery"
                   className="inline-block border border-foreground/20 px-12 py-4 text-xs font-mono uppercase tracking-[0.2em] hover:bg-foreground hover:text-background transition-all duration-500"
                 >
-                  View Complete Archive
+                  View Complete Gallery
                 </Link>
               </div>
             </div>

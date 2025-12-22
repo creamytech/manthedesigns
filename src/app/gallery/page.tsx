@@ -82,7 +82,7 @@ export default function WorksPage() {
               const hasSlideshow = artwork.images && artwork.images.length > 1;
               return (
               <motion.div key={artwork.id} variants={item} className="group">
-                <Link href={`/works/${artwork.id}`} className="block relative">
+                <Link href={`/gallery/${artwork.id}`} className="block relative">
                   <div className="relative aspect-[4/5] overflow-hidden bg-ebony">
                      {hasSlideshow ? (
                        <Slideshow 
