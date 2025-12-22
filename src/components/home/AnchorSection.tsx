@@ -20,7 +20,7 @@ export function AnchorSection() {
   const anchorRotate = useTransform(anchorProgress, [0.1, 0.6], [2, 0]);
 
   return (
-    <div ref={anchorRef} className="hidden md:block h-[180vh] relative">
+    <div ref={anchorRef} className="h-[180vh] relative">
       <motion.div
         style={{ opacity: anchorOpacity, scale: anchorScale, y: anchorY, rotate: anchorRotate }}
         className="sticky top-0 h-screen flex items-center justify-center"

@@ -93,12 +93,12 @@ export default function Home() {
           {/* Anchor Section - Desktop only */}
           <AnchorSection />
           
-          {/* Gallery - Desktop */}
+          {/* Gallery - Unified */}
           <motion.section 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="hidden md:block relative z-50 px-8 pt-40 pb-32 bg-[#050505]"
+            className="relative z-50 px-8 pt-40 pb-32 bg-[#050505]"
           >
             <div className="max-w-[1600px] mx-auto">
               <div className="mb-20 text-center">
@@ -124,65 +124,6 @@ export default function Home() {
               </div>
             </div>
           </motion.section>
-
-          {/* Mobile: Simple vertical layout */}
-          <section className="md:hidden py-8 px-4 space-y-6">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/Camo_Parallax.png" alt="" fill className="object-cover grayscale contrast-110" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/InTheSky_Parallax.png" alt="" fill className="object-cover grayscale contrast-110" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <div className="relative w-full aspect-square overflow-hidden">
-                <Image src="/images/DarkNight_Parallax.png" alt="" fill className="object-cover grayscale contrast-110" />
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1 }}
-            >
-              <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image src="/images/ThreeSaints_Parallax.png" alt="" fill className="object-cover grayscale" />
-              </div>
-            </motion.div>
-          </section>
-
-          {/* Mobile Gallery */}
-          <section className="md:hidden px-4 pb-16">
-            <div className="py-8 flex justify-center">
-              <div className="w-16 h-px bg-foreground/20" />
-            </div>
-            <div className="mb-10 text-center">
-              <p className="font-mono text-[8px] uppercase tracking-[0.4em] opacity-40 mb-3">Archive</p>
-              <h2 className="font-serif text-2xl italic opacity-70">Selected Works</h2>
-            </div>
-            <Gallery />
-          </section>
         </>
       )}
     </main>
