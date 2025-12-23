@@ -78,7 +78,7 @@ export default function WorkPage() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-40">
-                    {artwork.id.padStart(3, '0')} — {artwork.medium}
+                    {artwork.id.padStart(3, '0')} - {artwork.medium}
                   </span>
                   <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl italic leading-[1.1]">
                     {artwork.title}
@@ -117,7 +117,7 @@ export default function WorkPage() {
                 </button>
                 
                 <p className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-30 text-center">
-                  Free shipping — Certificate of authenticity included
+                  Free shipping. Certificate of authenticity included
                 </p>
               </div>
           </motion.div>

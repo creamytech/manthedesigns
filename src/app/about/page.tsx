@@ -35,7 +35,7 @@ export default function AboutPage() {
           className="mb-20"
         >
           <p className="font-serif text-xl md:text-2xl leading-[1.9] opacity-80">
-            I've been sketching since childhood—always with a pencil and paper close at hand. It began as instinct, a compulsion to fill empty space with marks, and over time it became the way I understand the world.
+            I've been sketching since childhood, always with a pencil and paper close at hand. It began as instinct, a compulsion to fill empty space with marks, and over time it became the way I understand the world.
           </p>
         </motion.div>
 
@@ -48,7 +48,7 @@ export default function AboutPage() {
           className="mb-20 md:pl-[10%]"
         >
           <p className="font-serif text-xl md:text-2xl leading-[1.9] opacity-80">
-            For years, I spent hundreds of hours filling my walls with work. When there was no more room, I began rotating new pieces in and storing the old ones away. Eventually, I realized I had accumulated an entire room of unseen original works—drawings no one had ever laid eyes on.
+            For years, I spent hundreds of hours filling my walls with work. When there was no more room, I began rotating new pieces in and storing the old ones away. Eventually, I realized I had accumulated an entire room of unseen original works, drawings no one had ever laid eyes on.
           </p>
         </motion.div>
 
@@ -61,7 +61,7 @@ export default function AboutPage() {
           className="mb-20"
         >
           <p className="font-serif text-xl md:text-2xl leading-[1.9] opacity-80">
-            That discovery led me to start showing my art in galleries across the Northeast. The response has been humbling—recognition I never sought but am grateful to receive.
+            That discovery led me to start showing my art in galleries across the Northeast. The response has been humbling, recognition I never sought but am grateful to receive.
           </p>
         </motion.div>
 
@@ -74,7 +74,7 @@ export default function AboutPage() {
           className="mb-32 md:pl-[5%]"
         >
           <p className="font-serif text-xl md:text-2xl leading-[1.9] opacity-80">
-            My practice is defined by an obsession with detail—a need to fill every inch of the page. It's a meditation, a discipline, and after all these years, still the only way I know how to make sense of what's inside.
+            My practice is defined by an obsession with detail, a need to fill every inch of the page. It's a meditation, a discipline, and after all these years, still the only way I know how to make sense of what's inside.
           </p>
         </motion.div>
 

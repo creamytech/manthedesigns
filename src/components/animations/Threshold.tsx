@@ -122,7 +122,7 @@ export function Threshold({ onEnter }: { onEnter: () => void }) {
             animate={{ opacity: 0.25 }}
             transition={{ delay: 3, duration: 2 }}
           >
-             Graphite — Ink — Plaster
+             Graphite . Ink . Plaster
           </motion.div>
 
           {/* Subtle pulsing border */}
