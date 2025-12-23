@@ -6,6 +6,7 @@ import { CartProvider } from "@/context/CartContext";
 import { AudioProvider } from "@/context/AudioContext";
 import { CartDrawer } from "@/components/cart/CartDrawer";
 import { AudioToggle } from "@/components/ui/AudioToggle";
+import { SmoothScrolling } from "@/components/ui/SmoothScrolling";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -39,14 +40,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased bg-background text-foreground selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black`}
       >
-        <AudioProvider>
-          <CartProvider>
-            <Grain />
-            <PageTransition>{children}</PageTransition>
-            <CartDrawer />
-            <AudioToggle />
-          </CartProvider>
-        </AudioProvider>
+        <SmoothScrolling>
+          <AudioProvider>
+            <CartProvider>
+              <Grain />
+              <PageTransition>{children}</PageTransition>
+              <CartDrawer />
+              <AudioToggle />
+            </CartProvider>
+          </AudioProvider>
+        </SmoothScrolling>
       </body>
     </html>
   );

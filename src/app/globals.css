@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+/* Lenis Recommended Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 :root {
   --background: #050505;
   --foreground: #dcdcd0; /* Bone */
@@ -57,13 +79,39 @@
 
 
 
-html,
-body {
+html {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  overflow-x: hidden;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll; /* Force native scrollbar on root */
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-ebony);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-graphite);
+  border: 2px solid var(--color-ebony);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-bone);
 }
 
 @layer utilities {
