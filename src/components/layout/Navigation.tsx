@@ -118,7 +118,7 @@ export function Navigation() {
           href="/" 
           className="font-serif text-lg md:text-xl tracking-tighter italic text-white/80 hover:text-white transition-colors relative z-[201]"
         >
-          Manthé
+          Matthew Manthé
         </Link>
 
         {/* Desktop Navigation */}
