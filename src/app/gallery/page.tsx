@@ -97,7 +97,7 @@ export default function WorksPage() {
                          fill
                          className={`object-cover transition-all duration-[2000ms] ease-in-out group-hover:scale-[1.03] contrast-110 brightness-95 group-hover:brightness-100 ${
                            !artwork.keepColor && artwork.medium !== "Plaster" ? "grayscale" : ""
-                         }`}
+                         } ${artwork.id === "26" ? "object-top" : ""}`}
                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                        />
                      )}
