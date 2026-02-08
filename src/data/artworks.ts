@@ -14,7 +14,7 @@ export interface Artwork {
 
 export const artworks: Artwork[] = [
   {
-    id: "1",
+    id: "dark-street",
     title: "Dark Street",
     medium: "Graphite",
     dimensions: "16x20",
@@ -23,7 +23,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "2",
+    id: "crossroads",
     title: "Crossroads",
     medium: "Graphite",
     dimensions: "16x20",
@@ -32,17 +32,17 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "3",
+    id: "sugar-skull-skeleton",
     title: "Sugar Skull Skeleton",
     medium: "Graphite",
     dimensions: "16x20",
     price: 85,
     imageUrl: "/images/Sugarskull1.png",
     images: ["/images/Sugarskull1.png", "/images/Sugarskull2.png"],
-    description: "Designed to be displayed from either side. When upside down, it’s a different piece of art.\n\nGraphite on paper, high quality giclee print."
+    description: "Designed to be displayed from either side. When upside down, it's a different piece of art.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "4",
+    id: "dark-mirror",
     title: "Dark Mirror",
     medium: "Graphite",
     dimensions: "16x20",
@@ -52,17 +52,17 @@ export const artworks: Artwork[] = [
     description: "Dark Mirror was drawn by constantly rotating the paper, so when inverted its a different piece. When framed, must have the ability to be hung from either side to fully appreciate.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "5",
+    id: "the-other-side",
     title: "The Other Side",
     medium: "Graphite",
     dimensions: "16x20",
     price: 85,
     imageUrl: "/images/THEOTHERSIDE1.png",
     images: ["/images/THEOTHERSIDE1.png", "/images/THEOTHERSIDE2.png"],
-    description: "When rotated on the wall, viewer is able to see “The Other Side”.\n\nGraphite on paper, high quality giclee print."
+    description: "When rotated on the wall, viewer is able to see \u201CThe Other Side\u201D.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "6",
+    id: "nightmares-revisited",
     title: "Nightmares Revisited",
     medium: "Graphite",
     dimensions: "11x14",
@@ -72,7 +72,7 @@ export const artworks: Artwork[] = [
     description: "This is my 3rd time revisiting nightmares, all different versions, but I finally got it out if my head.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "7",
+    id: "good-vs-evil",
     title: "Good vs. Evil",
     medium: "Graphite",
     dimensions: "16x20",
@@ -82,7 +82,7 @@ export const artworks: Artwork[] = [
     description: "There are four different views to this piece. Properly framed should have hangers on all sides so viewer can rotate art to preferred side.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "8",
+    id: "fully-awake",
     title: "Fully Awake",
     medium: "Graphite",
     dimensions: "16x20",
@@ -91,7 +91,7 @@ export const artworks: Artwork[] = [
     description: "This piece reflects the waking up of the pineal gland. When the eye stands alone ,you will be fully awake.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "9",
+    id: "nightmares",
     title: "Nightmares",
     medium: "Graphite",
     dimensions: "16x20",
@@ -101,7 +101,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "10",
+    id: "cheryls-bake-shop",
     title: "Cheryl's Bake Shop",
     medium: "Graphite",
     dimensions: "16x20",
@@ -110,7 +110,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "11",
+    id: "the-other-sketch",
     title: "The Other Sketch",
     medium: "Ink",
     dimensions: "8x10",
@@ -118,10 +118,10 @@ export const artworks: Artwork[] = [
     imageUrl: "/images/OtherSketch.png",
     images: ["/images/OtherSketch.png", "/images/OtherSketch2.png"],
     keepColor: true,
-    description: "One of my first sketches before I made “The Other Side”. It was done with wine markers. Also designed to be hung from either side.\n\nHigh quality giclee print."
+    description: "One of my first sketches before I made \u201CThe Other Side\u201D. It was done with wine markers. Also designed to be hung from either side.\n\nHigh quality giclee print."
   },
   {
-    id: "12",
+    id: "silent-scream",
     title: "Silent Scream",
     medium: "Graphite",
     dimensions: "16x16",
@@ -130,7 +130,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "13",
+    id: "paranoid",
     title: "Paranoid",
     medium: "Graphite",
     dimensions: "16x20",
@@ -139,7 +139,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "14",
+    id: "no-screaming",
     title: "No Screaming",
     medium: "Graphite",
     dimensions: "16x20",
@@ -148,7 +148,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "15",
+    id: "life",
     title: "Life",
     medium: "Graphite",
     dimensions: "16x16",
@@ -158,7 +158,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "16",
+    id: "possession",
     title: "Possession",
     medium: "Graphite",
     dimensions: "8x10",
@@ -167,7 +167,7 @@ export const artworks: Artwork[] = [
     description: "When spun 90 degrees, the picture changes and the evil comes out.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "17",
+    id: "moses",
     title: "Moses",
     medium: "Graphite",
     dimensions: "8x10",
@@ -177,17 +177,17 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "18",
+    id: "mother",
     title: "Mother",
     medium: "Graphite",
     dimensions: "20x24",
     price: 120,
     imageUrl: "/images/mother.png",
     isLandscape: true,
-    description: "This will always be my masterpiece. everythign after was always compared to “Mother”.\n\nGraphite on paper, limited number of signed Giclee Prints."
+    description: "This will always be my masterpiece. everythign after was always compared to \u201CMother\u201D.\n\nGraphite on paper, limited number of signed Giclee Prints."
   },
   {
-    id: "19",
+    id: "peeping-tom-cat",
     title: "Peeping Tom Cat",
     medium: "Graphite",
     dimensions: "11x14",
@@ -197,7 +197,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "20",
+    id: "lazy-day",
     title: "Lazy Day",
     medium: "Graphite",
     dimensions: "11x14",
@@ -207,7 +207,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "21",
+    id: "eye-see",
     title: "Eye See",
     medium: "Ink",
     dimensions: "11x14",
@@ -216,7 +216,7 @@ export const artworks: Artwork[] = [
     description: "Pen and Ink on Paper, high quality giclee print."
   },
   {
-    id: "22",
+    id: "morning",
     title: "Morning",
     medium: "Graphite",
     dimensions: "11x14",
@@ -226,7 +226,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "23",
+    id: "16-faces",
     title: "16 Faces",
     medium: "Graphite",
     dimensions: "16x16",
@@ -236,7 +236,7 @@ export const artworks: Artwork[] = [
     description: "There are 16 faces in this piece, each eye is connected to four faces. Designed to hang on either side.\n\nGraphite on paper, high quality giclee print."
   },
   {
-    id: "24",
+    id: "nightmare-2",
     title: "Nightmare #2",
     medium: "Ink",
     dimensions: "11x14",
@@ -246,7 +246,7 @@ export const artworks: Artwork[] = [
     description: "Ink on paper, high quality giclee print."
   },
   {
-    id: "25",
+    id: "dark-hall",
     title: "Dark Hall",
     medium: "Graphite",
     dimensions: "11x14",
@@ -255,8 +255,8 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "26",
-    title: "Don’t Walk",
+    id: "dont-walk",
+    title: "Don't Walk",
     medium: "Graphite",
     dimensions: "11x14",
     price: 80,
@@ -264,7 +264,7 @@ export const artworks: Artwork[] = [
     description: "Graphite on paper, high quality giclee print."
   },
   {
-    id: "27",
+    id: "in-the-sky",
     title: "In The Sky",
     medium: "Plaster",
     dimensions: "20x20",
@@ -273,7 +273,7 @@ export const artworks: Artwork[] = [
     description: "Carved and molded plaster, painted and clear coated. Custom reclaimed oak frame."
   },
   {
-    id: "28",
+    id: "camo",
     title: "Camo",
     medium: "Plaster",
     dimensions: "20x20",
@@ -283,7 +283,7 @@ export const artworks: Artwork[] = [
     description: "Hand carved plaster, painted and clear coated. Custom reclaimed oak frame."
   },
   {
-    id: "29",
+    id: "three-saints",
     title: "Three Saints",
     medium: "Plaster",
     dimensions: "25x27",
@@ -293,7 +293,7 @@ export const artworks: Artwork[] = [
     description: "Carved plaster, hand painted, clear coat\n\nCustom maple frame."
   },
   {
-    id: "30",
+    id: "dark-night",
     title: "Dark Night",
     medium: "Plaster",
     dimensions: "20x26",

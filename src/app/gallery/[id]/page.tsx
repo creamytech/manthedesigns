@@ -97,7 +97,7 @@ export default function WorkPage() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   <span className="font-mono text-[10px] uppercase tracking-[0.4em] opacity-40">
-                    {artwork.id.padStart(3, '0')} - {artwork.medium}
+                    {String(artworks.indexOf(artwork) + 1).padStart(3, '0')} — {artwork.medium}
                   </span>
                   <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl italic leading-[1.1]">
                     {artwork.title}
