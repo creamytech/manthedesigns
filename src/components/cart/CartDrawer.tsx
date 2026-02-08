@@ -1,12 +1,37 @@
 "use client";
 
+import { useState } from "react";
 import { useCart } from "@/context/CartContext";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 import Image from "next/image";
 
 export function CartDrawer() {
   const { items, isDrawerOpen, closeDrawer, removeFromCart, cartTotal } = useCart();
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const handleCheckout = async () => {
+    setIsCheckingOut(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ items }),
+      });
+
+      const data = await res.json();
+
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        console.error("Checkout failed:", data.error);
+        setIsCheckingOut(false);
+      }
+    } catch (err) {
+      console.error("Checkout error:", err);
+      setIsCheckingOut(false);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -117,8 +142,19 @@ export function CartDrawer() {
                     Shipping calculated at checkout
                 </p>
                 
-                <button className="w-full bg-foreground text-background py-5 font-mono uppercase tracking-[0.4em] text-[10px] hover:opacity-90 transition-opacity">
-                  Proceed to Checkout
+                <button
+                  onClick={handleCheckout}
+                  disabled={isCheckingOut}
+                  className="w-full bg-foreground text-background py-5 font-mono uppercase tracking-[0.4em] text-[10px] hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                >
+                  {isCheckingOut ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      <span>Redirecting…</span>
+                    </>
+                  ) : (
+                    "Proceed to Checkout"
+                  )}
                 </button>
               </div>
             )}
