@@ -80,6 +80,7 @@ export default function WorksPage() {
           >
             {filteredArtworks.map((artwork) => {
               const hasSlideshow = artwork.images && artwork.images.length > 1;
+              const objectFit = artwork.isLandscape ? "object-contain" : "object-cover";
               return (
               <motion.div key={artwork.id} variants={item} className="group">
                 <Link href={`/gallery/${artwork.id}`} className="block relative">
@@ -89,13 +90,14 @@ export default function WorksPage() {
                          images={artwork.images!} 
                          title={artwork.title} 
                          keepColor={artwork.keepColor || artwork.medium === "Plaster"}
+                         isLandscape={artwork.isLandscape}
                        />
                      ) : (
                        <Image
                          src={artwork.imageUrl}
                          alt={artwork.title}
                          fill
-                         className={`object-cover transition-all duration-[2000ms] ease-in-out group-hover:scale-[1.03] contrast-110 brightness-95 group-hover:brightness-100 ${
+                         className={`${objectFit} transition-all duration-[2000ms] ease-in-out group-hover:scale-[1.03] contrast-110 brightness-95 group-hover:brightness-100 ${
                            !artwork.keepColor && artwork.medium !== "Plaster" ? "grayscale" : ""
                          } ${artwork.id === "26" ? "object-top" : ""}`}
                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

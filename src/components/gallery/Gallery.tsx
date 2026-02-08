@@ -20,6 +20,7 @@ export function Gallery() {
 
 function GalleryItem({ artwork, index }: { artwork: Artwork; index: number }) {
   const hasSlideshow = artwork.images && artwork.images.length > 1;
+  const objectFit = artwork.isLandscape ? "object-contain" : "object-cover";
 
   return (
     <motion.div
@@ -36,13 +37,14 @@ function GalleryItem({ artwork, index }: { artwork: Artwork; index: number }) {
                images={artwork.images!} 
                title={artwork.title} 
                keepColor={artwork.keepColor || artwork.medium === "Plaster"}
+               isLandscape={artwork.isLandscape}
              />
            ) : (
              <Image
                src={artwork.imageUrl}
                alt={artwork.title}
                fill
-               className={`object-cover transition-all duration-700 ease-out group-hover:scale-[1.02] contrast-110 brightness-90 group-hover:brightness-100 ${
+               className={`${objectFit} transition-all duration-700 ease-out group-hover:scale-[1.02] contrast-110 brightness-90 group-hover:brightness-100 ${
                  !artwork.keepColor && artwork.medium !== "Plaster" ? "grayscale" : ""
                }`}
                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

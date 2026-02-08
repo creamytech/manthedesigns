@@ -43,7 +43,6 @@ export default function WorkPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-10 md:gap-16 lg:gap-24 items-start">
           {/* Image Section - Dominant */}
-          {/* Image Section - Dominant */}
           <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -65,6 +64,26 @@ export default function WorkPage() {
                     />
                 </div>
              ))}
+
+             {/* Spinning Frame Video */}
+             {artwork.videoUrl && (
+               <div className="relative w-full bg-ebony overflow-hidden">
+                 <div className="relative pt-2 pb-4">
+                   <span className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-40 block mb-4">
+                     360° Frame View
+                   </span>
+                   <video
+                     src={artwork.videoUrl}
+                     autoPlay
+                     loop
+                     muted
+                     playsInline
+                     controls
+                     className="w-full h-auto"
+                   />
+                 </div>
+               </div>
+             )}
           </motion.div>
 
           {/* Details Section - Quiet */}

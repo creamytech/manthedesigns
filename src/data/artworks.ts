@@ -7,6 +7,8 @@ export interface Artwork {
   imageUrl: string;
   images?: string[];
   keepColor?: boolean;
+  isLandscape?: boolean;
+  videoUrl?: string;
   description: string;
 }
 
@@ -66,6 +68,7 @@ export const artworks: Artwork[] = [
     dimensions: "11x14",
     price: 85,
     imageUrl: "/images/nightmares+revisited.png",
+    isLandscape: true,
     description: "This is my 3rd time revisiting nightmares, all different versions, but I finally got it out if my head.\n\nGraphite on paper, high quality giclee print."
   },
   {
@@ -94,6 +97,7 @@ export const artworks: Artwork[] = [
     dimensions: "16x20",
     price: 85,
     imageUrl: "/images/Nightmares.png",
+    isLandscape: true,
     description: "Graphite on paper, high quality giclee print."
   },
   {
@@ -150,6 +154,7 @@ export const artworks: Artwork[] = [
     dimensions: "16x16",
     price: 85,
     imageUrl: "/images/LIFE.png",
+    isLandscape: true,
     description: "Graphite on paper, high quality giclee print."
   },
   {
@@ -168,6 +173,7 @@ export const artworks: Artwork[] = [
     dimensions: "8x10",
     price: 40,
     imageUrl: "/images/MOSES.jpg",
+    isLandscape: true,
     description: "Graphite on paper, high quality giclee print."
   },
   {
@@ -177,6 +183,7 @@ export const artworks: Artwork[] = [
     dimensions: "20x24",
     price: 120,
     imageUrl: "/images/mother.png",
+    isLandscape: true,
     description: "This will always be my masterpiece. everythign after was always compared to “Mother”.\n\nGraphite on paper, limited number of signed Giclee Prints."
   },
   {
@@ -186,6 +193,7 @@ export const artworks: Artwork[] = [
     dimensions: "11x14",
     price: 75,
     imageUrl: "/images/PEEPINGTOMCAT.png",
+    isLandscape: true,
     description: "Graphite on paper, high quality giclee print."
   },
   {
@@ -195,6 +203,7 @@ export const artworks: Artwork[] = [
     dimensions: "11x14",
     price: 75,
     imageUrl: "/images/LAZYDAY.png",
+    isLandscape: true,
     description: "Graphite on paper, high quality giclee print."
   },
   {
@@ -213,6 +222,7 @@ export const artworks: Artwork[] = [
     dimensions: "11x14",
     price: 75,
     imageUrl: "/images/MORNING.png",
+    isLandscape: true,
     description: "Graphite on paper, high quality giclee print."
   },
   {
@@ -222,6 +232,7 @@ export const artworks: Artwork[] = [
     dimensions: "16x16",
     price: 85,
     imageUrl: "/images/16+Faces.jpg",
+    images: ["/images/16+Faces.jpg", "/images/16+Faces_inverted.jpg"],
     description: "There are 16 faces in this piece, each eye is connected to four faces. Designed to hang on either side.\n\nGraphite on paper, high quality giclee print."
   },
   {
@@ -231,6 +242,7 @@ export const artworks: Artwork[] = [
     dimensions: "11x14",
     price: 75,
     imageUrl: "/images/nightmares2.png",
+    isLandscape: true,
     description: "Ink on paper, high quality giclee print."
   },
   {

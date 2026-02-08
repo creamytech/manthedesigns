@@ -9,9 +9,10 @@ interface SlideshowProps {
   images: string[];
   title: string;
   keepColor?: boolean;
+  isLandscape?: boolean;
 }
 
-export function Slideshow({ images, title, keepColor = false }: SlideshowProps) {
+export function Slideshow({ images, title, keepColor = false, isLandscape = false }: SlideshowProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -64,7 +65,7 @@ export function Slideshow({ images, title, keepColor = false }: SlideshowProps) 
             src={images[currentIndex]}
             alt={`${title} - View ${currentIndex + 1}`}
             fill
-            className={`object-cover transition-all duration-700 ease-out contrast-110 brightness-90 group-hover:brightness-100 ${
+            className={`${isLandscape ? "object-contain" : "object-cover"} transition-all duration-700 ease-out contrast-110 brightness-90 group-hover:brightness-100 ${
               !keepColor ? "grayscale" : ""
             }`}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
